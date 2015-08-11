@@ -89,4 +89,8 @@
 
     End Function
 
+    Public Function test()
+        MsgBox("TEST Box in DTsaperionVBNETLib works")
+        Return True
+    End Function
 End Class
