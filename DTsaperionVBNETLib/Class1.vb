@@ -3,6 +3,7 @@
     Public Function saveDokument(filelocation As String, Mandant As Integer,
                                  Unternehmen As Integer, WE As Integer,
                                  HausNr As Integer, Wohnung As Integer,
+                                 FolgeNr As Integer,
                                  AdresseNr As Integer, DokuArt As String,
                                  VorgangKZ As String, Vorname As String,
                                  Name As String, Sachbearbeiter As String,
@@ -56,6 +57,9 @@
         End If
         If AdresseNr > 0 Then
             oDocument.SetProperty("AdressNr", AdresseNr)
+        End If
+        If FolgeNr > 0 Then
+            oDocument.SetProperty("FolgeNr", FolgeNr)
         End If
         'oDocument.SetProperty("WohnungZus", WohnungZus)
         'oDocument.SetProperty("FolgeNr", FolgeNr)
