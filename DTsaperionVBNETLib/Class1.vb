@@ -40,6 +40,7 @@
         oDocument.SetProperty("Sachbearbeiter", Sachbearbeiter)
         Dim todaysdate As String = String.Format("{0:dd/MM/yyyy}", DateTime.Now)
         oDocument.SetProperty("ArchivDatum", todaysdate)
+        oDocument.SetProperty("BelegDatum", todaysdate)
         If Subject IsNot "" Then
             oDocument.SetProperty("Memo1", Subject)
         End If
