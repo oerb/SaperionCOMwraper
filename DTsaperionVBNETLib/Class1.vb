@@ -45,9 +45,9 @@
         If Subject IsNot "" Then
             oDocument.SetProperty("Memo1", Subject)
         End If
-        'If Memo2 IsNot "" Then
-        '    oDocument.SetProperty("Memo2", Memo2)
-        'End If
+        If Memo2 IsNot "" Then
+            oDocument.SetProperty("Memo2", Memo2)
+        End If
         If Unternehmen > 0 Then
             oDocument.SetProperty("Unternehmen", Unternehmen)
         End If
