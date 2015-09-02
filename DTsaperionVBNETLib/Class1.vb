@@ -8,7 +8,7 @@
                                  VorgangKZ As String, Vorname As String,
                                  Name As String, Sachbearbeiter As String,
                                  Subject As String, MieterNr As Integer,
-                                 Memo2 As String)
+                                 Memo2 As String, ErledBis As Date)
         Dim SapApp As Object
         Dim oDocument As Object
         Dim iRet As Object
@@ -28,7 +28,8 @@
         ' OrdnerBezeichnung, DokuArt, VorgangKZ, BelegNr, BelegDatum, MieterNr, KontoNr,
         ' AuftragsNr, Gewerk, SeitenNr, Betrag, Vorname, Name, Autor, ArchivDatum,
         ' Sachbearbeiter, Memo1, Memo2, Memo3, UrkundenNr, Aktenzeichen, Bankverbindung,
-        ' RecordMngtID , Grundbuch, GrundbuchBereich, GrundbuchBlatt
+        ' RecordMngtID , Grundbuch, GrundbuchBereich, GrundbuchBlatt, Projekt
+        ' Abgeschlossen, ErldBis
 
 
         '  bei Seriendruck Feldinhalt auslesen
@@ -42,6 +43,7 @@
         Dim todaysdate As String = String.Format("{0:dd/MM/yyyy}", DateTime.Now)
         oDocument.SetProperty("ArchivDatum", todaysdate)
         oDocument.SetProperty("BelegDatum", todaysdate)
+
         If Subject IsNot "" Then
             oDocument.SetProperty("Memo1", Subject)
         End If
@@ -80,6 +82,12 @@
         End If
         If Name IsNot "" Then
             oDocument.SetProperty("Name", Name)
+        End If
+        Dim Proofdate As Date = DateTime.Now
+        Proofdate = Proofdate.AddDays(1)
+        If ErledBis > Proofdate Then
+            Dim ErledBisdate As String = String.Format("{0:dd/MM/yyyy}", ErledBis)
+            oDocument.SetProperty("ErledBis", ErledBisdate)
         End If
 
         ' immer MIETER bei Mieterschreiben, wegen Plattenansteuerung in der Jukebox
