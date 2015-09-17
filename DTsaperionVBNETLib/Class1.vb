@@ -8,12 +8,14 @@
                                  VorgangKZ As String, Vorname As String,
                                  Name As String, Sachbearbeiter As String,
                                  Subject As String, MieterNr As Integer,
-                                 Memo2 As String, ErledBis As Date)
+                                 Memo2 As String, ErledBis As Date, Kreditor As Integer,
+                                 KreditorName As String
+                                 )
         Dim SapApp As Object
         Dim oDocument As Object
         Dim iRet As Object
 
-        SapApp = CreateObject("Saperion.Application")
+        'SapApp = CreateObject("Saperion.Application")
 
         'wenn saperion läuft, brauch nicht zu erfolgen
         'SapApp.login "win", "berlin"
@@ -49,6 +51,12 @@
         End If
         If Memo2 IsNot "" Then
             oDocument.SetProperty("Memo2", Memo2)
+        End If
+        If KreditorName IsNot "" Then
+            oDocument.SetProperty("KreditorName", KreditorName)
+        End If
+        If Kreditor > 0 Then
+            oDocument.SetProperty("Kreditor", Kreditor)
         End If
         If Unternehmen > 0 Then
             oDocument.SetProperty("Unternehmen", Unternehmen)
